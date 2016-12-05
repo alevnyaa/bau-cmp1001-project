@@ -27,3 +27,6 @@
 *.exe
 *.out
 *.app
+
+# Itslearning files
+ITSLEARNING-FILES/*
