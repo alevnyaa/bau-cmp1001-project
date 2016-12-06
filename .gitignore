@@ -28,5 +28,6 @@
 *.out
 *.app
 
-# Itslearning files
+# Already given files
 ITSLEARNING-FILES/*
+data.h

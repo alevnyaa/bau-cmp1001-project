@@ -1,0 +1,31 @@
+5 files per user, 1GB per file max
+File size of 0 means no file
+
+data.h holds the data in global arrays
+use excel to validate
+
+username/password/size of file 1/..2/..3/..4/..5
+
+Requirements
+* Write a function that performs each of the below given tasks (the ones given in menu)
+* The program will display the following menu when executed.
+* When the user enters a choice, call the related function and execute the task.
+* The menu will be displayed at each time until 0 is entered by the user.
+Menu
+1) Display number of files and sum of file sizes for each user
+2) Display usernames of the users who have no files in the system
+3) Display average file size for each user
+4) Display password of a username entered by the user
+5) Search user (get username as input and display password and size of each file of that user)
+6) Display the minimum file size (0 (zero) means nothing which should be ignored)
+7) Display the maximum file size (0 (zero) means nothing which should be ignored)
+8) Upload a new file for a user
+  a) Get the username
+  b) If there is no available free file slot for that user, display warning message and the menu
+  c) If there is available free file slot get the file size
+    i) If file size is less than or equal to 1000, set it to free slot of that user
+    ii) If file size is greater than 1000, display warning message and the menu
+9) Get a character (a single char) from the user and display all usernames beginning with the entered character
+0) Exit
+Enter your choice:
+--------------------------------------------------------------------------------
