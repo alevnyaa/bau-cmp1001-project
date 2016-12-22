@@ -81,16 +81,21 @@ void passwordOfUser(){
 }
 
 void passwordAndSizeOfEachFile(){
-  cout << "Username" << "\t" << "Password" << "\t" << "Sizes" << endl;
+  cout << "Input a username, with underscores" << endl;
+  std::string username;
+  cin >> username;
   for(int i = 0; i < 82; i++){
-    cout << usernames[i] << "\t" << passwords[i];
-  	for(int j = 0; j < 5; j++){
-      int currentSize = file_sizes[i][j];
-      if(currentSize > 0){
-        cout << "\t" << currentSize;
+    if(username == usernames[i]){
+      cout << "User: " << username << " Password: " << passwords[i] << " Files:";
+      for(int j = 0; j < 5; j++){
+        int currentSize = file_sizes[i][j];
+	if(file_sizes[i][j] > 0){
+	  cout << " " << file_sizes[i][j];
+	}
       }
-  	}
-    cout << endl;
+      cout << endl;
+      break;
+    }
   }
 }
 
