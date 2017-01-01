@@ -98,7 +98,7 @@ void passwordAndSizeOfEachFile(){
     }
   }
 }
-
+/* Commented out because this code finds min and max for all users independently, and after asking about it we found out that you want a global search
 void minFileSize(){
   cout << "Username" << "\t" << "MinSize" << endl;
   for(int i = 0; i < 82; i++){
@@ -129,6 +129,33 @@ void maxFileSize(){
       cout << usernames[i] << "\t" << maxSize << endl;
     }
   }
+}
+*/
+
+void minFileSize(){
+  int minSize = 1000;
+  for(int i = 0; i < 82; i++){
+  	for(int j = 0; j < 5; j++){
+      int currentSize = file_sizes[i][j];
+      if(currentSize > 0 && currentSize < minSize){
+        minSize = currentSize;
+      }
+  	}
+  }
+  cout << "Min file size: " << minSize << endl;
+}
+
+void maxFileSize(){
+  int maxSize = 0;
+  for(int i = 0; i < 82; i++){
+  	for(int j = 0; j < 5; j++){
+      int currentSize = file_sizes[i][j];
+      if(currentSize > maxSize){
+        maxSize = currentSize;
+      }
+  	}
+  }
+  cout << "Max file size: " << maxSize << endl;
 }
 
 void uploadFile(){
