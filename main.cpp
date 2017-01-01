@@ -181,7 +181,6 @@ void uploadFile(){
 
   if(slotID == -1){
     cout << "You don't have any empty file slots" << endl;
-    displayMenu;
     return;
   }
 
@@ -192,7 +191,6 @@ void uploadFile(){
     file_sizes[userID][slotID] = fileSize;
   }else{
     cout << "The file is too large" << endl;
-    displayMenu();
   }
 }
 
