@@ -1,5 +1,4 @@
-// 1001project.cpp : Defines the entry point for the console application.
-//
+// C++ TEAM PROJECT.
 
 #include<iostream>
 #include "data.h"
@@ -21,6 +20,8 @@ void choice9();
 int main()
 {
 	int choice = -1; //to initialize while loop
+    while (choice != 0){
+        choice = -1;
 	while (choice < 0 || choice > 9) {		//to enter 0-9 only
 	cout<< "1) Display number of files and sum of file sizes for each user\n"
 		<< "2) Display usernames of the users who have no files in the system\n"
@@ -68,6 +69,7 @@ switch (choice) //choice switch
 	case 0:
 		break;
 	} //end of switch
+    }
 
 	return 0;
 }
@@ -88,7 +90,6 @@ void choice1() {
 		cout << usernames[i] << "\t" << counter << "\t" << sum << endl;
 	} // end of outer loop
 	cout << endl;
-	main();
 }
 //Display number of files and sum of file sizes for each user
 
@@ -106,7 +107,6 @@ void choice2() {
 			cout << usernames[i] << " has no files in the system." << endl;
 	} // end of outer loop
 	cout << endl;
-	main();
 }
 //Display usernames of the users who have no files in the system
 
@@ -124,7 +124,6 @@ void choice3() {
 		cout << usernames[i] << "\t" << sum << endl;
 	} // end of outer loop
 	cout << endl;
-	main();
 }
 //Display average file size for each user
 
@@ -143,7 +142,6 @@ void choice4() {
 	}
 	if (counter==82)
 		cout << "You entered a wrong username." << endl << endl;
-	main();
 }
 //Display password of a username entered by the user
 
@@ -166,7 +164,6 @@ void choice5() {
 	}
 	if (counter==82)
 		cout << "You entered a wrong username." << endl << endl;
-	main();
 }
 //Search user (get username as input and display password and size of each file of that user)
 
@@ -181,7 +178,6 @@ void choice6() {
 		}
 	}
 	cout << "Minimum file size is " << min << endl << endl;
-	main();
 
 /*	cout << "Username" << "\t" << "MinSize" << endl;
   for(int i = 0; i < 82; i++){
@@ -210,7 +206,6 @@ void choice7() {
 		}
 	}
 	cout << "Maximum file size is " << max << endl << endl;
-	main();
 
 /*	cout << "Username" << "\t" << "MaxSize" << endl;
   for(int i = 0; i < 82; i++){
@@ -273,7 +268,6 @@ void choice8() {
 	else {
     cout << "You should enter the file size between 0-1000!\n" << endl;
   }
-	main();
 }
 //Upload a new file for a user
 	//a) Get the username
@@ -307,6 +301,5 @@ void choice9() {
 		main();
 	}
 	cout<<endl;
-	main();
 }
 //Get a character (a single char) from the user and display all usernames beginning with the entered character
