@@ -2,8 +2,9 @@
 //
 
 #include<iostream>
-#include<ctime>
 #include "data.h"
+#include<string>
+#include<cctype>
 
 using namespace std;
 
@@ -35,7 +36,7 @@ int main()
 	cin >> choice;
 	}
 
-	switch (choice) //choice switch
+switch (choice) //choice switch
 	{
 	case 1:
 		choice1();
@@ -89,7 +90,7 @@ void choice1() {
 	cout << endl;
 	main();
 }
-//done
+//Display number of files and sum of file sizes for each user
 
 void choice2() {
 	for (int i = 0; i < 82; i++) // to display all 82 users
@@ -107,7 +108,7 @@ void choice2() {
 	cout << endl;
 	main();
 }
-//done
+//Display usernames of the users who have no files in the system
 
 void choice3() {
 	cout << "User\t" << "Average File Size\n";
@@ -125,15 +126,49 @@ void choice3() {
 	cout << endl;
 	main();
 }
-//done
+//Display average file size for each user
 
 void choice4() {
-
+	cout << "Enter the username: ";
+	string username;
+	int counter = 0;
+	cin >> username;
+	for(int i = 0; i < 82; i++) {
+		if(username == usernames[i]){
+			cout << "Password: " << passwords[i] << endl << endl;
+			break;
+		}
+		else
+			counter++;
+	}
+	if (counter==82)
+		cout << "You entered a wrong username." << endl << endl;
+	main();
 }
+//Display password of a username entered by the user
 
 void choice5() {
-
+	cout << "Enter username: ";
+	string username;
+	int counter = 0;
+	cin >> username;
+	for (int i = 0; i < 82; i++) {
+		if(username == usernames[i]) {
+			cout << "Password: " << passwords[i] << endl;
+			for (int j = 0; j < 5; j++) {
+				cout << "Size " << j+1 << ": " << file_sizes[i][j] << endl;
+			}
+			cout << endl;
+			break;
+		}
+		else
+			counter++;
+	}
+	if (counter==82)
+		cout << "You entered a wrong username." << endl << endl;
+	main();
 }
+//Search user (get username as input and display password and size of each file of that user)
 
 void choice6() {
 	int min = file_sizes[0][0];
@@ -147,8 +182,22 @@ void choice6() {
 	}
 	cout << "Minimum file size is " << min << endl << endl;
 	main();
+
+/*	cout << "Username" << "\t" << "MinSize" << endl;
+  for(int i = 0; i < 82; i++){
+    int minSize = 1001;
+  	for(int j = 0; j < 5; j++){
+      int currentSize = file_sizes[i][j];
+      if(currentSize > 0 && currentSize < minSize){
+        minSize = currentSize;
+      }
+  	}
+    if(minSize < 1001){
+      cout << usernames[i] << "\t" << minSize << endl;
+    }
+  } */ //Displaying min file size for each user.
 }
-//done
+//Display the minimum file size (0 (zero) means nothing which should be ignored)
 
 void choice7() {
 	int max = file_sizes[0][0];
@@ -162,13 +211,102 @@ void choice7() {
 	}
 	cout << "Maximum file size is " << max << endl << endl;
 	main();
+
+/*	cout << "Username" << "\t" << "MaxSize" << endl;
+  for(int i = 0; i < 82; i++){
+    int maxSize = 0;
+  	for(int j = 0; j < 5; j++){
+      int currentSize = file_sizes[i][j];
+      if(currentSize > maxSize){
+        maxSize = currentSize;
+      }
+  	}
+    if(maxSize > 0){
+      cout << usernames[i] << "\t" << maxSize << endl;
+    }
+  } */ //Displaying max file size for each user.
 }
-//done
+//Display the maximum file size (0 (zero) means nothing which should be ignored)
 
 void choice8() {
+	int counter = 0;
+	cout << "Enter username: ";
+  string username;
+  cin >> username;
 
+  int userID = -1;
+  for(int i = 0; i < 82; i++){
+    if(username == usernames[i]){
+      userID = i;
+      break;
+    }
+		else {
+			counter++;
+		}
+  }
+
+	if (counter == 82) {
+		cout << "You entered a wrong username.\n" << endl;
+		main();
+	}
+
+  int slotID = -1;
+  for(int i = 0; i < 5; i++){
+    if(file_sizes[userID][i] == 0){
+      slotID = i;
+      break;
+    }
+  }
+
+  if(slotID == -1){
+    cout << "There is no free file slot for this user.\n" << endl;
+    main();
+  }
+
+  cout << "Enter the file size: ";
+  int fileSize;
+  cin >> fileSize;
+  if(fileSize < 1000 && fileSize > 0) {
+    file_sizes[userID][slotID] = fileSize;
+		cout << "File size is set to the free file slot.\n" << endl;
+  }
+	else {
+    cout << "You should enter the file size between 0-1000!\n" << endl;
+  }
+	main();
 }
+//Upload a new file for a user
+	//a) Get the username
+	//b) If there is no available free file slot for that user, display warning message and the menu
+	//c) If there is available free file slot get the file size
+		//i) If file size is less than or equal to 1000, set it to free slot of that user
+			//ii) If file size is greater than 1000, display warning message and the menu
 
 void choice9() {
-
+	cout << "Input a character: ";
+	string rawInput = "";
+	cin >> rawInput;
+	char firstChar;
+	if (rawInput.length() == 1) {
+		firstChar = rawInput[0];
+		
+		if (isupper(firstChar)) {
+			for (int i = 0; i < 82; i++) {
+				if (usernames[i][0] == firstChar) {
+					cout << usernames[i] << endl;
+				}
+			}
+		}
+		else {
+			cout << "Invalid input. Enter an uppercase letter!\n" << endl;
+			main();
+		}
+	}
+	else {
+		cout << "Invalid input. Enter only 1 character.\n" << endl;
+		main();
+	}
+	cout<<endl;
+	main();
 }
+//Get a character (a single char) from the user and display all usernames beginning with the entered character
